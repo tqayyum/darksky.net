@@ -23,7 +23,7 @@ This projects is used to automate tests for web/mobile
 1. Open terminal
 2. CD to the project directory:
 3. Goto config.properties file and make required changes before running the test
-4. enter: `mvn clean test` to run the test (Note: you can run individual tags using this command `mvn test -Dcucumber.options="--tags @one-drive-regression"`)
+4. enter: `mvn clean test` to run the test (Note: you can run individual tags using this command `mvn test -Dcucumber.options="--tags @darksky-1"`)
 5. enter: `mvn site` to generate the HTML Allure report 
 6. goto this path in project directory to view the report `/target/site/allure-maven-plugin/index.html`
 
