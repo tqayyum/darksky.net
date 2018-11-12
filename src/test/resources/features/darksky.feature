@@ -1,5 +1,5 @@
 @darksky-regression
-Feature: One Drive file upload Feature
+Feature: Darksky search Feature
 
   Background:
     Given I am on darksky website homepage

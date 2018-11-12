@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class DarkskyPage extends BasePage {
+
     private By searchField = By.xpath("//input[@type='text']");
     private By clickOnSearch = By.xpath("//a[@class='searchButton']");
     private By currentTemp = By.xpath("//span[@class='summary swap']");
