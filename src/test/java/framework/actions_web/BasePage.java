@@ -13,6 +13,10 @@ import stepdefinition.SharedSD;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -84,6 +88,28 @@ public class BasePage {
         String result = getText(locator).substring(start,end);
         return Integer.parseInt(result);
     }
+
+    public String[] splitString(By locator, String regex, int index) {
+      return  getText(locator).split(regex, index);
+    }
+
+    public String getCurrentDate(int range) {
+        SimpleDateFormat df = new SimpleDateFormat("ha");
+        Date date = new Date();
+        String currentDate = df.format(date);
+        return currentDate;
+    }
+
+//    public String incrementHourBy(int hrs) throws ParseException {
+//        String dt = getCurrentDate();
+//        SimpleDateFormat df = new SimpleDateFormat("ha");
+//        Calendar c = Calendar.getInstance();
+//        c.setTime(df.parse(dt));
+//        c.add(Calendar.HOUR, hrs);
+//        dt = df.format(c.getTime());
+//        return dt;
+//    }
+
 
 	//This method is to select in a dropdown with an array
     public void setDropDownValue(By locator, String expectedText) {

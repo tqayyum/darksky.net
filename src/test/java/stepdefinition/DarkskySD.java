@@ -6,6 +6,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import framework.page_object_model_web.DarkskyPage;
 
+import java.text.ParseException;
+
 public class DarkskySD {
 
     private DarkskyPage ds = new DarkskyPage();
@@ -23,6 +25,10 @@ public class DarkskySD {
     public void clickOnSearch() { ds.clickSearch(); }
 
     @Then("^Verify current temperature is between low and high$")
-    public void verifyTemp() { ds.verifyTempRange(); }
+    public void verifyTemp() throws ParseException, InterruptedException { ds.verifyTimeline(); }
+
+    //@darksky-2
+    @Then("^I verify timeline is displayed with two hours incremented$")
+    public void verifyTimeline() {}
 
 }
