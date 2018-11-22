@@ -29,6 +29,6 @@ public class DarkskySD {
 
     //@darksky-2
     @Then("^I verify timeline is displayed with two hours incremented$")
-    public void verifyTimeline() {}
+    public void verifyTimeline() throws InterruptedException { ds.verifyTimeline(); }
 
 }

@@ -32,19 +32,20 @@ public class DarkskyPage extends BasePage {
 
     public String[] splitToString() { return splitString(currentTemp,"˚",2);}
 
-
     public void verifyTimeline() throws  InterruptedException {
         int count = 0, range = 0, match = 0;
         waitFor(3000);
+
         for (int i = 3; i < 25; i+=2) {
 
             count +=1;
             range +=2;
-            String name = SharedSD.getDriver().findElement(By.xpath("//div[@id='timeline']//div[@class='hours']//span["+i+"]")).getText();
+
+            String name = SharedSD.getDriver().findElement(By.xpath("//div[@id='timeline']//div[@class='hours']//span["+ i +"]")).getText();
             if (getCurrentDate(range).contains(name)){
                 match +=1;
             }
-            if(count ==12){
+            if(count == 12){
                 break;
             }
 
