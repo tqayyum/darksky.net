@@ -25,7 +25,7 @@ public class DarkskySD {
     public void clickOnSearch() { ds.clickSearch(); }
 
     @Then("^Verify current temperature is between low and high$")
-    public void verifyTemp() throws InterruptedException { }
+    public void verifyTemp() throws InterruptedException { ds.verifyTempRange(); }
 
     //@darksky-2
     @Then("^I verify timeline is displayed with two hours incremented$")
@@ -37,4 +37,11 @@ public class DarkskySD {
 
     @Then("^I verify lowest and highest temp is displayed correctly$")
     public void verifyLowAndHigh() { ds.verifyLowAndHighTemp(); }
+
+    //@darksky-4
+    @When("^I click on Time Machine$")
+    public void clickOnTime() {ds.clickOnTimeMachine();}
+
+    @Then("^I verify date is selected to today's date$")
+    public void verifyCurrentDate() { ds.verifyCurrentDate(); }
 }

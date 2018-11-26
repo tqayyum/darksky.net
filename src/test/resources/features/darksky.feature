@@ -19,3 +19,8 @@ Feature: Darksky search Feature
   Scenario: Verify individual day temp timeline
     When I expand today's timeline
     Then I verify lowest and highest temp is displayed correctly
+
+  @darksky-4
+  Scenario: Verify Time Machine Calendar
+    When I click on Time Machine
+    Then I verify date is selected to today's date

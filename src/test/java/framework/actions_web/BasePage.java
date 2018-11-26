@@ -13,9 +13,7 @@ import stepdefinition.SharedSD;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,8 +97,15 @@ public class BasePage {
       return  getText(locator).split(regex, index);
     }
 
-    public String getCurrentDate(int range) {
+    public String getCurrentHour(int range) {
         SimpleDateFormat df = new SimpleDateFormat("ha");
+        Date date = new Date();
+        String currentHour = df.format(date);
+        return currentHour;
+    }
+
+    public String getCurrentDate() {
+        SimpleDateFormat df = new SimpleDateFormat("dd");
         Date date = new Date();
         String currentDate = df.format(date);
         return currentDate;

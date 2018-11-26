@@ -21,6 +21,8 @@ public class DarkskyPage extends BasePage {
     private By minTemp2 = By.xpath("//div[@class='dayDetails revealed']//span[@class='highTemp swip']");
     private By maxTemp1 = By.cssSelector("#week > a:nth-child(2) > span.tempRange > span.maxTemp");
     private By maxTemp2 = By.xpath("//div[@class='dayDetails revealed']//span[@class='lowTemp swap']");
+    private By timeMachine = By.xpath("//a[@class='button']");
+    private By calendar = By.xpath("//table[@class='pika-table']//tbody");
 
     public void clearText() { clearOn(searchField); }
 
@@ -36,12 +38,10 @@ public class DarkskyPage extends BasePage {
 
     public String[] splitToString() { return splitString(currentTemp,"˚",2);}
 
-    public void verifyTempRange() {
+    public void verifyTempRange() throws InterruptedException {
         int    current = getCurrentTemp(), low = getLowTemp(), high = getHighTemp();
-
-        Assert.assertTrue(low <= current && current <= high,
-                "Current temp (" + current + "˚) is not in between low (" + low + "˚) and high (" + high + "˚)"
-        );
+        waitFor(3000);
+        Assert.assertTrue(low <= current && current <= high);
     }
 
     public void verifyTimeline() throws  InterruptedException {
@@ -54,7 +54,7 @@ public class DarkskyPage extends BasePage {
             range +=2;
 
             String name = SharedSD.getDriver().findElement(By.xpath("//div[@id='timeline']//div[@class='hours']//span["+ i +"]")).getText();
-            if (getCurrentDate(range).contains(name)){
+            if (getCurrentHour(range).contains(name)){
                 match +=1;
             }
             if(count == 12){
@@ -75,13 +75,13 @@ public class DarkskyPage extends BasePage {
     public int getMaxTemp2() { return subStringToInt(maxTemp2, 0, 2); }
 
     public void verifyLowAndHighTemp() {
-        int minTemp1 = getMinTemp1(),
-            minTemp2 = getMinTemp2(),
-            maxTemp1 = getMaxTemp1(),
-            maxTemp2 = getMaxTemp2();
+        int minTemp1 = getMinTemp1(), minTemp2 = getMinTemp2(), maxTemp1 = getMaxTemp1(), maxTemp2 = getMaxTemp2();
 
         Assert.assertTrue(minTemp1 == minTemp2);
         Assert.assertTrue(maxTemp1 == maxTemp2);
     }
 
+    public void clickOnTimeMachine() { clickOn(timeMachine);}
+
+    public void verifyCurrentDate() { setDropDownValue(calendar, getCurrentDate()); }
 }
