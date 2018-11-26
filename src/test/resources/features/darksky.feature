@@ -17,5 +17,5 @@ Feature: Darksky search Feature
 
   @darksky-3
   Scenario: Verify individual day temp timeline
-    When I expand todays timeline
+    When I expand today's timeline
     Then I verify lowest and highest temp is displayed correctly

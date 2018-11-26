@@ -85,7 +85,13 @@ public class BasePage {
 	}
 
 	public int subStringToInt(By locator, int start, int end) {
-        String result = getText(locator).substring(start,end);
+        String result = null;
+        try {
+            result = getText(locator).substring(start,end);
+        } catch (NoSuchElementException e) {
+            Assert.fail("Element is not found with this locator: " + locator.toString());
+            e.printStackTrace();
+        }
         return Integer.parseInt(result);
     }
 
@@ -99,17 +105,6 @@ public class BasePage {
         String currentDate = df.format(date);
         return currentDate;
     }
-
-//    public String incrementHourBy(int hrs) throws ParseException {
-//        String dt = getCurrentDate();
-//        SimpleDateFormat df = new SimpleDateFormat("ha");
-//        Calendar c = Calendar.getInstance();
-//        c.setTime(df.parse(dt));
-//        c.add(Calendar.HOUR, hrs);
-//        dt = df.format(c.getTime());
-//        return dt;
-//    }
-
 
 	//This method is to select in a dropdown with an array
     public void setDropDownValue(By locator, String expectedText) {
