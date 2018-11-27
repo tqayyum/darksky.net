@@ -80,11 +80,6 @@ public class BasePage {
 		return text;
 	}
 
-	public int subStringToInt(By locator, int start, int end) {
-        String result = getText(locator).substring(start,end);
-        return Integer.parseInt(result);
-    }
-
 	//This method is to select in a dropdown with an array
     public void setDropDownValue(By locator, String expectedText) {
         try {
@@ -106,16 +101,6 @@ public class BasePage {
         try {
             WebElement myFrame = webAction(locator);
             SharedSD.getDriver().switchTo().frame(myFrame);
-        } catch (NoSuchElementException e) {
-            Assert.fail("Element is not found with this locator: " + locator.toString());
-            e.printStackTrace();
-        }
-    }
-
-    //This method is to compare the text
-    public void compareText(By locator, String expectTxt){
-        try {
-            Assert.assertEquals(getText(locator), expectTxt);
         } catch (NoSuchElementException e) {
             Assert.fail("Element is not found with this locator: " + locator.toString());
             e.printStackTrace();
