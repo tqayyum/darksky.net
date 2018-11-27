@@ -13,8 +13,6 @@ import stepdefinition.SharedSD;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -82,35 +80,6 @@ public class BasePage {
 		return text;
 	}
 
-	public int subStringToInt(By locator, int start, int end) {
-        String result = null;
-        try {
-            result = getText(locator).substring(start,end);
-        } catch (NoSuchElementException e) {
-            Assert.fail("Element is not found with this locator: " + locator.toString());
-            e.printStackTrace();
-        }
-        return Integer.parseInt(result);
-    }
-
-    public String[] splitString(By locator, String regex, int index) {
-      return  getText(locator).split(regex, index);
-    }
-
-    public String getCurrentHour(int range) {
-        SimpleDateFormat df = new SimpleDateFormat("ha");
-        Date date = new Date();
-        String currentHour = df.format(date);
-        return currentHour;
-    }
-
-    public String getCurrentDate() {
-        SimpleDateFormat df = new SimpleDateFormat("dd");
-        Date date = new Date();
-        String currentDate = df.format(date);
-        return currentDate;
-    }
-
 	//This method is to select in a dropdown with an array
     public void setDropDownValue(By locator, String expectedText) {
         try {
@@ -132,16 +101,6 @@ public class BasePage {
         try {
             WebElement myFrame = webAction(locator);
             SharedSD.getDriver().switchTo().frame(myFrame);
-        } catch (NoSuchElementException e) {
-            Assert.fail("Element is not found with this locator: " + locator.toString());
-            e.printStackTrace();
-        }
-    }
-
-    //This method is to compare the text
-    public void compareText(By locator, String expectTxt){
-        try {
-            Assert.assertEquals(getText(locator), expectTxt);
         } catch (NoSuchElementException e) {
             Assert.fail("Element is not found with this locator: " + locator.toString());
             e.printStackTrace();

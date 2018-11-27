@@ -25,7 +25,7 @@ public class DarkskySD {
     public void clickOnSearch() { ds.clickSearch(); }
 
     @Then("^Verify current temperature is between low and high$")
-    public void verifyTemp() throws InterruptedException { ds.verifyTempRange(); }
+    public void verifyTemp() throws InterruptedException { }
 
     //@darksky-2
     @Then("^I verify timeline is displayed with two hours incremented$")
